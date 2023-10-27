@@ -1,4 +1,4 @@
 # http5112
 C# Assignment 1
 
-![image of the Figma File](./_ReadMe/SSC#.png)
+![image of the C# output](./_ReadMe/SSC#.png)

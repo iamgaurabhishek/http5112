@@ -1,0 +1,13 @@
+﻿@model IEnumerable <n01605783cumulative1.Models.Teacher>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>I want to display a list of Teachers</h2>
+
+@{ 
+    foreach(n01605783cumulative1.Models.Teacher Teacher in Model)
+            {
+                <div><a href="/Teacher/Show/@Teacher.TeacherId">@Teacher.TeacherFirstName</a> </div>
+            }
+}

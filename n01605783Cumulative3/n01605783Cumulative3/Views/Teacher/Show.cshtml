@@ -1,0 +1,13 @@
+﻿@model n01605783Cumulative3.Models.Teacher
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>id : @Model.TeacherId</h2>
+<h2>Name : @Model.TeacherFirstName @Model.TeacherLastName</h2>
+<p>Employee number = @Model.TeacherEmployeeNumber</p>
+<p>salary = @Model.TeacherSalary</p>
+<p>Hired date : @Model.TeacherHireDate</p>
+<a class="dellink" href="/Teacher/DeleteConfirm/@Model.TeacherId">Delete</a>
+<a class="navlink" href="/Teacher/Update/@Model.TeacherId">Update</a>

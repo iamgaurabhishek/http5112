@@ -1,0 +1,19 @@
+﻿﻿@model MyPassionProjectW2024n01605783.Models.CommentDto
+
+
+@{
+    ViewBag.Title = "View";
+}
+
+<a style="color:#ab2020;" href="/Comment/DeleteConfirm/@Model.CommentId" class="btn btn-danger">Delete</a>
+
+<a href="/Comment/Edit/@Model.CommentId" class="btn btn-info">Update</a>
+
+<a href="/Comment/List" class="btn btn-success">Go back to list</a>
+<h2>Comment</h2>
+<div class="mb-3">
+    <div>Comment: @Model.CommentDescription</div>
+</div>
+<div class="mb-3">
+    <div>User Name: @Model.UserName</div>
+</div>

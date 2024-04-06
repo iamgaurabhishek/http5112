@@ -1,0 +1,16 @@
+﻿﻿@model MyPassionProjectW2024n01605783.Models.TagDto
+
+
+@{
+    ViewBag.Title = "View";
+}
+
+<a style="color:#ab2020;" href="/Tag/DeleteConfirm/@Model.TagId" class="btn btn-danger">Delete</a>
+
+<a href="/Tag/Edit/@Model.TagId" class="btn btn-info">Update</a>
+
+<a href="/Tag/List" class="btn btn-success">Go back to list</a>
+<h2>Tag</h2>
+<div class="mb-3">
+    <div>Tag Name: @Model.TagName</div>
+</div>

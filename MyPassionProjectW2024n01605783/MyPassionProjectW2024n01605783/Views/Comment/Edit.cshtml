@@ -1,0 +1,24 @@
+﻿@model MyPassionProjectW2024n01605783.Models.CommentDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Comment</h2>
+
+<form method="POST" action="/Comment/Update/@Model.CommentId">
+    <input type="number" style="display:none;" name="CommentId" value="@Model.CommentId" />
+    <div>
+        <label class="form-label">Comment ID </label> <input class="form-control" type="text" value="@Model.CommentId" name="CommentId" />
+    </div>
+    <div>
+        <label class="form-label">Comment </label> <input class="form-control" type="text" value="@Model.CommentDescription" name="CommentDescription" />
+    </div>
+    <!-------------------------------------------------User-------------------------------------------------------->
+    <div>
+        <label class="form-label">User ID </label> <input class="form-control" type="text" value="@Model.UserId" name="UserId" />
+    </div>
+    <div>
+        <input type="submit" value="Update" class="btn btn-outline-success" />
+    </div>
+</form>

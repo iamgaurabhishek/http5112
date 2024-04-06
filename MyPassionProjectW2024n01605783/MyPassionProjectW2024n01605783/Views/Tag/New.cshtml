@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Blog</h2>
+<form action="/Blog/Create" method="POST">
+    <div>
+        <label class="form-label">Tag ID </label> <input class="form-control" type="text" name="TagId" />
+    </div>
+    <div>
+        <label class="form-label">Name </label> <input class="form-control" type="text" name="TagName" />
+    </div>
+    <div>
+        <input type="submit" value="Add Blog" class="btn btn-primary" />
+    </div>
+</form>

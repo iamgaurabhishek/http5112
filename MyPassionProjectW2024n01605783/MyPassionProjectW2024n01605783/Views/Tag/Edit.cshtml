@@ -1,0 +1,22 @@
+﻿@model MyPassionProjectW2024n01605783.Models.TagDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Tag</h2>
+
+<form method="POST" action="/Tag/Update/@Model.TagId">
+    <input type="number" style="display:none;" name="TagId" value="@Model.TagId" />
+    <div>
+        <label class="form-label">Tag ID </label> <input class="form-control" type="text" value="@Model.TagId" name="TagId" />
+    </div>
+    <div>
+        <label class="form-label">Name </label> <input class="form-control" type="text" value="@Model.TagName" name="TagName" />
+    </div>
+    <div>
+        <input type="submit" value="Update" class="btn btn-outline-success" />
+    </div>
+</form>
+
+

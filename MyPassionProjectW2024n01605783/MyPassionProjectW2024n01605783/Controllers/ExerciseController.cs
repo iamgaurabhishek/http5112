@@ -1,4 +1,5 @@
 ﻿using MyPassionProjectW2024n01605783.Models;
+using MyPassionProjectW2024n01605783.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -48,21 +49,24 @@ namespace MyPassionProjectW2024n01605783.Controllers
 
         public ActionResult Details(int id)
         {
+            DetailsExercise ViewModel = new DetailsExercise();
             //objective: communicate with our Exercise data api to retrieve one Exercise
             //curl https://localhost:44301/api/exercisedata/findexercise/{id}
 
             string url = "exercisedata/findexercise/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            Debug.WriteLine("The response code is ");
-            Debug.WriteLine(response.StatusCode);
-
             ExerciseDto selectedexercise = response.Content.ReadAsAsync<ExerciseDto>().Result;
-            Debug.WriteLine("Exercise to do : ");
-            Debug.WriteLine(selectedexercise.ExerciseName);
+
+            ViewModel.SelectedExercise = selectedexercise;
+
+            url = "BlogData/ListBlogsForExercise/" + id;
+            response = client.GetAsync(url).Result;
+            List<BlogDto> blogsForExercise = response.Content.ReadAsAsync<List<BlogDto>>().Result;
+            ViewModel.BlogsForExercise = blogsForExercise;
 
 
-            return View(selectedexercise);
+            return View(ViewModel);
         }
 
         public ActionResult Error()

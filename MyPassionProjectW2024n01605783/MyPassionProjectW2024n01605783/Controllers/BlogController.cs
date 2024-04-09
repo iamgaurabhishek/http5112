@@ -94,23 +94,16 @@ namespace MyPassionProjectW2024n01605783.Controllers
             string url = "blogdata/addblog";
 
 
-            string jsonpayload = jss.Serialize(Blog);
+            string jsonpayload = jss.Serialize(blog);
 
             Debug.WriteLine(jsonpayload);
 
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
-
+            
             HttpResponseMessage response = client.PostAsync(url, content).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("List");
-            }
-            else
-            {
-                return RedirectToAction("Error");
-            }
-
+            
+            return RedirectToAction("List");
 
         }
 
@@ -149,9 +142,6 @@ namespace MyPassionProjectW2024n01605783.Controllers
                 HttpContent content = new StringContent(jsonpayload);
                 content.Headers.ContentType.MediaType = "application/json";
 
-                //POST: api/BlogData/UpdateBlog/{id}
-                //Header : Content-Type: application/json
-                // the below code is like sending the fetch request to the url point which is defined by us
                 HttpResponseMessage response = client.PostAsync(url, content).Result;
 
                 // the below code is redirecting the page to "List" page.

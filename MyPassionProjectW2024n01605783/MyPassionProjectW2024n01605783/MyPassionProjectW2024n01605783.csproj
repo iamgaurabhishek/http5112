@@ -46,10 +46,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr3.Runtime.3.5.1\lib\net40-client\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=3.3.0.0, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentNHibernate.3.3.0\lib\net461\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.4\lib\net461\Iesi.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.5.3.3\lib\net461\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq.EagerFetching, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.EagerFetching.2.2.0\lib\net45\Remotion.Linq.EagerFetching.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -106,10 +126,6 @@
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
-    </Reference>
-    <Reference Include="Antlr3.Runtime">
-      <Private>True</Private>
-      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -184,14 +200,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BlogDataController.cs" />
-    <Compile Include="Controllers\CommentController.cs" />
-    <Compile Include="Controllers\CommentDataController.cs" />
     <Compile Include="Controllers\ExerciseController.cs" />
     <Compile Include="Controllers\ExerciseDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\TagController.cs" />
-    <Compile Include="Controllers\TagDataController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserDataController.cs" />
     <Compile Include="Controllers\WorkoutController.cs" />
@@ -219,19 +231,22 @@
     <Compile Include="Migrations\202402090010557_users.designer.cs">
       <DependentUpon>202402090010557_users.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202404031528117_Blog_Workout_collabs.cs" />
-    <Compile Include="Migrations\202404031528117_Blog_Workout_collabs.designer.cs">
-      <DependentUpon>202404031528117_Blog_Workout_collabs.cs</DependentUpon>
+    <Compile Include="Migrations\202404091932402_blog_workout.cs" />
+    <Compile Include="Migrations\202404091932402_blog_workout.designer.cs">
+      <DependentUpon>202404091932402_blog_workout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404092317012_blog.cs" />
+    <Compile Include="Migrations\202404092317012_blog.designer.cs">
+      <DependentUpon>202404092317012_blog.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Blog.cs" />
-    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Exercise.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\ViewModel\DetailsExercise.cs" />
     <Compile Include="Models\Workout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -325,24 +340,12 @@
     <Content Include="Views\Exercise\DeleteConfirm.cshtml" />
     <Content Include="Views\User\DeleteConfirm.cshtml" />
     <Content Include="Views\Workout\DeleteConfirm.cshtml" />
-    <Content Include="Views\Comment\DeleteConfirm.cshtml" />
-    <Content Include="Views\Comment\Details.cshtml" />
-    <Content Include="Views\Comment\Edit.cshtml" />
-    <Content Include="Views\Comment\Error.cshtml" />
-    <Content Include="Views\Comment\List.cshtml" />
-    <Content Include="Views\Comment\New.cshtml" />
     <Content Include="Views\Blog\DeleteConfirm.cshtml" />
     <Content Include="Views\Blog\Details.cshtml" />
     <Content Include="Views\Blog\Edit.cshtml" />
     <Content Include="Views\Blog\Error.cshtml" />
     <Content Include="Views\Blog\List.cshtml" />
     <Content Include="Views\Blog\New.cshtml" />
-    <Content Include="Views\Tag\DeleteConfirm.cshtml" />
-    <Content Include="Views\Tag\Details.cshtml" />
-    <Content Include="Views\Tag\Edit.cshtml" />
-    <Content Include="Views\Tag\Error.cshtml" />
-    <Content Include="Views\Tag\List.cshtml" />
-    <Content Include="Views\Tag\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -390,8 +393,11 @@
     <EmbeddedResource Include="Migrations\202402090010557_users.resx">
       <DependentUpon>202402090010557_users.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202404031528117_Blog_Workout_collabs.resx">
-      <DependentUpon>202404031528117_Blog_Workout_collabs.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202404091932402_blog_workout.resx">
+      <DependentUpon>202404091932402_blog_workout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404092317012_blog.resx">
+      <DependentUpon>202404092317012_blog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

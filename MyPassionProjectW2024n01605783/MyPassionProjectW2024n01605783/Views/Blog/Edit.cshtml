@@ -21,29 +21,18 @@
         <input class="form-control" type="text" name="BlogShortDescription" value="@Model.BlogShortDescription" />
     </div>
     <div>
-        <label>Image</label>
-        <input class="form-control" type="text" name="BlogFeaturedImageUrl" value="@Model.BlogFeaturedImageUrl" />
-    </div>
-    <div>
         <label>Content</label>
         <input class="form-control" type="text" name="BlogContent" value="@Model.BlogContent" />
     </div>
     <div>
         <label>Published Date</label>
-        <input class="form-control" type="date" name="BlogPublishedDate" value="@Model.BlogPublishedDate" />
-    </div>
-    <!-------------------------------------------------User-------------------------------------------------------->
-    <div>
-        <label class="form-label">User ID </label>
-        <input class="form-control" type="text" name="UserId" />
-    </div>
-    <!-------------------------------------------------Tag-------------------------------------------------------->
-    <div>
-        <label class="form-label">Tag ID </label>
-        <input class="form-control" type="text" name="TagId" />
+        <input class="form-control" type="date" name="BlogPublishedDate" value="@Model.BlogPublishedDate.ToString("yyyy-MM-dd")" />
     </div>
     <div>
-
+        <label>Exercise Id</label>
+        <input class="form-control" type="number" name="ExerciseId" value="@Model.ExerciseId" />
+    </div>
+    <div>
         <input type="submit" value="Update" class="btn btn-outline-success" />
     </div>
 

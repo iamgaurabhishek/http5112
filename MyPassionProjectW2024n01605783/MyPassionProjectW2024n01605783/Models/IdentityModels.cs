@@ -31,8 +31,6 @@ namespace MyPassionProjectW2024n01605783.Models
         // we are setting the user as a DB table
         public DbSet<User> Users { get; set; }
         public DbSet<Blog> Blogs { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<Tag> Tags { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

@@ -33,18 +33,8 @@ namespace MyPassionProjectW2024n01605783.Controllers
                     BlogHeading = blog.BlogHeading,
                     BlogAuthor = blog.BlogAuthor,
                     BlogContent = blog.BlogContent,
-                    BlogFeaturedImageUrl = blog.BlogFeaturedImageUrl,
                     BlogPublishedDate = blog.BlogPublishedDate,
                     BlogShortDescription = blog.BlogShortDescription,
-
-                    UserId = blog.User.UserId,
-                    UserName = blog.User.UserName,
-
-                    TagName = blog.Tag.TagName,
-                    TagId = blog.Tag.TagId,
-
-                    CommentId = blog.Comment.CommentId,
-                    CommentDescription = blog.Comment.CommentDescription,
 
                 }));
 
@@ -72,19 +62,10 @@ namespace MyPassionProjectW2024n01605783.Controllers
                 BlogHeading = blog.BlogHeading,
                 BlogAuthor = blog.BlogAuthor,
                 BlogContent = blog.BlogContent,
-                BlogFeaturedImageUrl = blog.BlogFeaturedImageUrl,
                 BlogPublishedDate = blog.BlogPublishedDate,
                 BlogShortDescription = blog.BlogShortDescription,
 
-                UserId = blog.User.UserId,
-                UserName = blog.User.UserName,
-
-                TagName = blog.Tag.TagName,
-                TagId = blog.Tag.TagId,
-
-                CommentId = blog.Comment.CommentId,
-                CommentDescription = blog.Comment.CommentDescription,
-
+                ExerciseId = blog.Exercise.ExerciseId,
             };
 
             if (blog == null)
@@ -152,6 +133,30 @@ namespace MyPassionProjectW2024n01605783.Controllers
             db.SaveChanges();
 
             return Ok();
+        }
+
+        [ResponseType(typeof(Blog))]
+        [HttpGet]
+        [Route("api/BlogData/ListBlogsForExercise/{id}")]
+        public IHttpActionResult ListBlogsForExercise(int id)
+        {
+            List<Blog> blogs = db.Blogs.Where(b => b.ExerciseId == id).ToList();
+            List<BlogDto> blogDtos = new List<BlogDto>();
+            Console.WriteLine(blogs);
+
+            foreach (var blog in blogs)
+            {
+                blogDtos.Add(new BlogDto()
+                {
+                    BlogId = blog.BlogId,
+                    BlogAuthor = blog.BlogAuthor,
+                    BlogContent = blog.BlogContent,
+                    BlogHeading = blog.BlogHeading,
+                    BlogPublishedDate = blog.BlogPublishedDate,
+                    ExerciseId = blog.Exercise.ExerciseId,
+                });
+            }
+            return Ok(blogDtos);
         }
 
         // POST: api/BlogData/DeleteBlog/5
